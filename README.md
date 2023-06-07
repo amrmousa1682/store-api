@@ -1,50 +1,87 @@
-scripts :-
-script for test with test database: npm run test
-script for build typescript files: npm run build
-script for migrate dev database : npm run migrate
-script for start with dev database: npm run start
-script for migrate dev database and start : npm run start:dev
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-endpointes :-
-1-http://localhost:3000/users                   post request with user data return jwt token and add user to database
-2-http://localhost:3000/users                   get request with token return users list
-3-http://localhost:3000/users/:id               get request with token return users with the id in endpoint
-4-http://localhost:3000/products                post request with product data and token  add product to database 
-5-http://localhost:3000/products                get request return products list
-6-http://localhost:3000/products/:id            get request return product with the id in endpoint
-6-http://localhost:3000/orders                  post request with orders data and token  add order to database 
-7-http://localhost:3000/orders/:id              get request return order with the id in endpoint
-8-http://localhost:3000/orders/:id/product      post request with ordered_product data and token add product to the order with the id in endpoint in database
-9-http://localhost:3000/orders/user/:id         get request with toke return order of the user with the id in endpoint
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-ports :-
-database port for 5431
-server port 3000
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Package installation instructions :-
-use npm install to install all project dependencies
-use npm install -g db-migrate to instal db_migrate
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Setup db and server instructions :-
-1- install Packeges using previous instructions
-2- start database on docker use docker-compose up after installing docker and this will create database and users
-3- test project use npm run test or start project by useing npm start:dev and test i by postman
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-envoirnemt variables :-
-POSTGRES_HOST=localhost
-POSTGRES_DB_DEV=app
-POSTGRES_DB_TEST=app_test
-ENV=dev
-POSTGRES_USER=app
-POSTGRES_PASSWORD=123456789
-SALT_ROUNDS=10
-PEPPER=Yk3)[8Kc=u>/XK
-SECRET=7>WQCNJ^fk{PmUB
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
- set up database :-
-    CREATE USER app with password '123456789'; 
-    CREATE DATABASE app_test;
-    CREATE DATABASE app;
-    GRANT ALL PRIVILEGES ON DATABASE app_test TO app;
-    GRANT ALL PRIVILEGES ON DATABASE app TO app;
- ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Great! Here's a revised version of your README file with the improvements:
+
+# Node.js E-commerce API
+
+This is a Node.js-based API for an e-commerce website. The API allows users to sign up, view products, place orders, and view their order history. The API is built using TypeScript and uses PostgreSQL as its database.
+
+## Installation
+
+To install the necessary packages, run:
+
+```
+npm install
+```
+
+To install the db-migrate package, run:
+
+```
+npm install -g db-migrate
+```
+
+## Usage
+
+To start the server with the dev database, run:
+
+```
+npm run start:dev
+```
+
+To build the TypeScript files, run:
+
+```
+npm run build
+```
+
+To migrate the dev database, run:
+
+```
+npm run migrate
+```
+
+To start the server with the test database, run:
+
+```
+npm run test
+```
+
+## Endpoints
+
+- POST /users: Creates a new user and returns a JWT token.
+- GET /users: Returns a list of all users.
+- GET /users/:id: Returns the user with the specified ID.
+- POST /products: Creates a new product.
+- GET /products: Returns a list of all products.
+- GET /products/:id: Returns the product with the specified ID.
+- POST /orders: Creates a new order.
+- GET /orders/:id: Returns the order with the specified ID.
+- POST /orders/:id/product: Adds a product to the order with the specified ID.
+- GET /orders/user/:id: Returns the order history for the user with the specified ID.
+
+## Ports
+
+- Database: 5431
+- Server: 3000
+
+## Environment Variables
+
+- POSTGRES_HOST: The host of the PostgreSQL server.
+- POSTGRES_DB_DEV: The name of the development database.
+- POSTGRES_DB_TEST: The name of the test database.
+- ENV: The environment (either "dev" or "test").
+- POSTGRES_USER: The username of the PostgreSQL user.
+- POSTGRES_PASSWORD: The password of the PostgreSQL user.
+- SALT_ROUNDS: The number of salt rounds used for password hashing.
+- PEPPER: A pepper value used for password hashing.
+- SECRET: A secret value used for JWT token generation.
+
+## Database Setup
+
+To set up the database, run the following commands:
+
+```
+CREATE USER app WITH PASSWORD '123456789';
+CREATE DATABASE app_test;
+CREATE DATABASE app;
+GRANT ALL PRIVILEGES ON DATABASE app_test TO app;
+GRANT ALL PRIVILEGES ON DATABASE app TO app;
+```
