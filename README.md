@@ -1,5 +1,3 @@
-Great! Here's a revised version of your README file with the improvements:
-
 # Node.js E-commerce API
 
 This is a Node.js-based API for an e-commerce website. The API allows users to sign up, view products, place orders, and view their order history. The API is built using TypeScript and uses PostgreSQL as its database.
